@@ -1,0 +1,24 @@
+{
+  "name": "pipeline-graphql-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "simulator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamg14/pipeline-health-graphql-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/adamg14/pipeline-health-graphql-api/issues"
+  },
+  "homepage": "https://github.com/adamg14/pipeline-health-graphql-api#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
