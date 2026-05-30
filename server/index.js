@@ -1,26 +1,35 @@
 const express = require("express");
-
 const app = express();
-
+const pool = require("../db/db_connection");
+const insertEvent = require("./insert_event");
 app.use(express.json())
 
 const PORT = 4000;
+const TABLE_NAME = 'pipelines';
 
+app.post("/api/pipeline-events", async(request, response) => {
+    try {
+        const event = request.body;
 
-app.post("/api/pipeline-events", (request, response) => {
-    const event = request.body;
-
-    if (!event){
-        return response.status(400).json({
+        if (!event){
+            console.log("missing event");
+            return response.status(400).json({
             error: "Missing Event"
-        })
-    };
+            })
+        };
 
-    event.received_at = new Date().toISOString();
+        event.received_at = new Date().toISOString();
 
-    console.log(event);
+        // insert the event into the local posgres db
+        console.log(event);
 
-    response.status(201).json({ message: "Event received", event });
+        await insertEvent(pool,event, TABLE_NAME);
+        response.status(201).json({ message: "Event received", event });
+        } catch(err) {
+            console.log("ROUTE ERROR: ");
+            console.log(err);
+            response.status(500).json({ error: err.message });
+        }
 });
 
 

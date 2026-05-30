@@ -1,4 +1,4 @@
-const SERVER_URL = "http://localhost:4000/api/pipeline-events"; // typo fixed too
+const SERVER_URL = "http://localhost:4000/api/pipeline-events";
 
 const PIPELINES = [
   "etl-transactions",
